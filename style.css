@@ -33,7 +33,7 @@ body {
 
 /* GENERAL ELEMENTS */
 #section--1 {
-  padding: 0rem 0rem;
+  padding: 30rem 0rem;
   margin-top: 20rem;
   border-top: 1px solid #ddd;
   transition: transform 1s, opacity 1s;
