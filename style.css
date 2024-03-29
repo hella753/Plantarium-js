@@ -40,6 +40,7 @@ body {
 }
 .section {
   padding: 30rem 0px;
+  margin-bottom: 10rem;
   transition: transform 1s, opacity 1s;
 }
 
