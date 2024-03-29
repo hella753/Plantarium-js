@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="shortcut icon" type="image/png" href="logo.png" />
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="plantSt.css" />
+
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+    <script
+      defer
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+      crossorigin=""
+    ></script>
+
+    <script defer src="shopsc.js"></script>
+
+    <title>Plantarium | Your Favorite Plants Shop</title>
+
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"
+    ></script>
+    <script type="text/javascript">
+      (function () {
+        emailjs.init({
+          publicKey: "1i7NBN_J0AQ36CEno",
+        });
+      })();
+    </script>
+  </head>
+  <body>
+    <section class="section" id="section--main">
+      <header class="header">
+        <nav class="nav">
+          <img
+            src="logo.png"
+            alt="Plantarium logo"
+            class="nav__logo"
+            id="logo"
+            data-version-number="3.0"
+          />
+          <ul class="nav__links">
+            <!-- <li class="nav__item">
+            <a class="nav__link">About us</a>
+          </li> -->
+            <li class="nav__item">
+              <a class="nav__link" href="index.html">Home</a>
+            </li>
+            <li class="nav__item">
+              <a class="nav__link cartmenu">Cart</a>
+            </li>
+          </ul>
+        </nav>
+      </header>
+    </section>
+
+    <div class="filtering">
+      <div class="nav__links2">
+        <div class="species">
+          <div class="dropdown">
+            <!-- <button onclick="myFunction()" class="dropbtn">
+            Search With Family
+          </button> -->
+            <img class="arrow" src="arrow.png" />
+            <button onclick="funcClear()" class="clear">Clear</button>
+            <input
+              onclick="myFunction()"
+              type="text"
+              class="dropbtn"
+              placeholder="Search With Family..."
+              id="input-species"
+              onkeyup="filterFunction()"
+            />
+            <div id="species-p" class="dropdown-content">
+              <nav class="navForUl">
+                <ul class="ULL">
+                  <li class="lisp">Piperaceae</li>
+                  <li class="lisp">Araceae</li>
+                  <li class="lisp">Begoniaceae</li>
+                  <li class="lisp">Paradisaeidae; Swainson, 1825</li>
+                  <li class="lisp">Asparagaceae</li>
+                  <li class="lisp">Asteraceae</li>
+                  <li class="lisp">Orchidaceae</li>
+                  <li class="lisp">Cactaceae</li>
+                  <li class="lisp">Asphodelaceae</li>
+                  <li class="lisp">Arecaceae</li>
+                  <li class="lisp">Marantaceae</li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+        </div>
+
+        <div class="names">
+          <div class="dropdown2">
+            <img class="arrow2" src="arrow.png" />
+            <button onclick="funcClearNames()" class="clearNames">Clear</button>
+            <input
+              onclick="myFunction2()"
+              type="text"
+              class="dropbtn2"
+              placeholder="Search With Name..."
+              id="search-input"
+              onkeyup="filterFunction2()"
+            />
+            <div id="species-pN" class="dropdown-contentN">
+              <nav class="navForUlN">
+                <ul class="ULLN">
+                  <li class="lispN">Peperomia</li>
+                  <li class="lispN">Zzplant</li>
+                  <li class="lispN">Begonia</li>
+                  <li class="lispN">Birdparadise</li>
+                  <li class="lispN">Asparagusfern</li>
+                  <li class="lispN">Stringofpearls</li>
+                  <li class="lispN">Pothos</li>
+                  <li class="lispN">Peacelily</li>
+                  <li class="lispN">Calatea</li>
+                  <li class="lispN">Chinesevergreen</li>
+                  <li class="lispN">Areca</li>
+                  <li class="lispN">Cacti</li>
+                  <li class="lispN">Dracaenamarginata</li>
+                  <li class="lispN">Orchid</li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="priceRange-flex">
+        <div class="wrapper-price">
+          <header>
+            <p>Filter With Price</p>
+          </header>
+          <div class="price-input">
+            <div class="field">
+              <span class="min">Minimum</span>
+              <input type="number" name="min" class="input-min" value="10" />
+            </div>
+            <div class="separator">-</div>
+            <div class="field">
+              <span class="max">Maximum</span>
+              <input type="number" name="max" class="input-max" value="200" />
+            </div>
+          </div>
+          <div class="slider-price">
+            <div class="progress"></div>
+          </div>
+          <div class="range-input">
+            <input
+              type="range"
+              class="range-min"
+              min="5"
+              max="200"
+              value="10"
+              step="1"
+            />
+            <input
+              type="range"
+              class="range-max"
+              min="5"
+              max="200"
+              value="200"
+              step="1"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid-container">
+      <div class="plants">
+        <img class="plantspic peperomia" src="peperomia.webp" />
+      </div>
+      <div class="plants">
+        <img class="plantspic zz-plant" src="zz-plant.jpg" />
+      </div>
+      <div class="plants">
+        <img class="plantspic begonia" src="begonia.jpg" />
+      </div>
+      <div class="plants">
+        <img class="plantspic bird-paradise" src="bird-paradise.jpg" />
+      </div>
+      <div class="plants">
+        <img class="plantspic asparagus-fern" src="asparagus-fern.jpg" />
+      </div>
+      <div class="plants">
+        <img class="plantspic string-of-pearls" src="string-of-pearls.webp" />
+      </div>
+      <div class="plants">
+        <img class="plantspic pothos" src="pothos.png" />
+      </div>
+      <div class="plants">
+        <img class="plantspic peace-lily" src="peace-lily.jpg" />
+      </div>
+      <div class="plants">
+        <img class="plantspic calatea" src="calatea.jpg" />
+      </div>
+      <div class="plants">
+        <img class="plantspic chinese-evergreen" src="chinese-evergreen.webp" />
+      </div>
+      <div class="plants">
+        <img class="plantspic aloe-vera" src="aloe-vera.png" />
+      </div>
+      <div class="plants">
+        <img class="plantspic areca" src="areca.webp" />
+      </div>
+      <div class="plants">
+        <img class="plantspic cacti" src="cacti.jpg" />
+      </div>
+      <div class="plants">
+        <img
+          class="plantspic dracaena-marginata"
+          src="dracaena-marginata.jpg"
+        />
+      </div>
+      <div class="plants">
+        <img class="plantspic orchid" src="orchid.webp" />
+      </div>
+    </div>
+    <div class="modal hidden">
+      <button class="btn--close-modal">&times;</button>
+      <h2 class="modal__header">Plant Information</h2>
+      <div class="modal__form">
+        <p class="name">Name:</p>
+        <p class="family">Family:</p>
+        <p class="price">Price:</p>
+        <div class="amountDiv">
+          <p class="amount">Amount:</p>
+          <input
+            class="count"
+            onkeyup="restrictNumberInput()"
+            type="number"
+            min="1"
+            max="100"
+          />
+        </div>
+        <button class="btn cart">Add to Cart</button>
+      </div>
+    </div>
+    <div class="overlay hidden"></div>
+
+    <div class="modalcart hidden">
+      <button class="btn--close-modalcart">&times;</button>
+      <h2 class="modalcart__header">Cart</h2>
+      <div class="modalcart__form">
+        <p class="element1"></p>
+        <p class="total"></p>
+        <button class="btn buy">Buy</button>
+      </div>
+    </div>
+    <div class="overlaycart hidden"></div>
+
+    <div class="buy-modal hidden">
+      <button class="btn--close-modalbuy">&times;</button>
+      <h2 class="modalbuy__header">Cashout</h2>
+
+      <div class="modalbuy__form">
+        <p class="sum"></p>
+        <p class="locatPre">Choose the Delivery Address</p>
+        <button class="btn order-product">Order</button>
+      </div>
+      <div class="mapContainer" id="map"></div>
+    </div>
+    <div class="overlaybuy hidden"></div>
+
+    <div class="modalOrdered hidden">
+      <button class="btn--close-modalOrdered">&times;</button>
+      <h2 class="modal__headerOrdered">To Contact You</h2>
+      <div class="modal__formOrdered">
+        <label class="first-name">Your Name:</label>
+        <input class="first-name-in" />
+        <label class="phone-number">Phone Number:</label>
+        <input id="phone" type="tel" name="phone" class="phone-number-in" />
+        <button class="btn submit">Submit</button>
+      </div>
+    </div>
+    <div class="overlayordered hidden"></div>
+
+    <div class="modalDone hidden">
+      <h2 class="modal__headerOrdered">Order received</h2>
+    </div>
+    <div class="overlaydone hidden"></div>
+  </body>
+</html>
