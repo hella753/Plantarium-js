@@ -224,7 +224,7 @@ function sendEmail() {
   };
 
   emailjs
-    .send(serviceID, templateID, params)
+    .send(SERVICEID, TEMPLATEID, params)
     .then((res) => {
       nameC = "";
       phoneC = "";
