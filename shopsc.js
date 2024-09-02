@@ -222,8 +222,7 @@ function sendEmail() {
     Customer's location is: ${coordsForM}.
     Customer's order is ${str}. price is ${totalPrice}`,
   };
-  const serviceID = "service_94s2fp9";
-  const templateID = "template_r2pafcf";
+
   emailjs
     .send(serviceID, templateID, params)
     .then((res) => {
