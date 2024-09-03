@@ -223,6 +223,9 @@ function sendEmail() {
     Customer's order is ${str}. price is ${totalPrice}`,
   };
 
+  SERVICEID = "service_94s2fp9";
+  TEMPLATEID = "template_r2pafcf";
+
   emailjs
     .send(SERVICEID, TEMPLATEID, params)
     .then((res) => {
